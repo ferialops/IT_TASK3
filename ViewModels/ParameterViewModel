@@ -1,0 +1,30 @@
+using System;
+using System.ComponentModel;
+
+namespace task3.ViewModels
+{
+    public class ParameterViewModel : INotifyPropertyChanged
+    {
+        private object _value;
+
+        public string Name { get; set; }
+        public Type Type { get; set; }
+
+        public object Value
+        {
+            get => _value;
+            set
+            {
+                _value = value;
+                OnPropertyChanged(nameof(Value));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+}
